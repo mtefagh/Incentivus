@@ -1,37 +1,7 @@
-## Welcome to GitHub Pages
+# Welcome to _Project Incentivus_!
 
-You can use the [editor on GitHub](https://github.com/mtefagh/Incentivus/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+**Project Incentivus** is a new research initiative aiming to explore convex optimization applications to the incentive layer of blockchain protocols.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This interdisciplinary effort started from an earlier [work](https://ethresear.ch/t/draft-position-paper-on-resource-pricing/2838/24?u=mtefagh) on [EIP 1559](https://ethereum-magicians.org/t/eip-1559-fee-market-change-for-eth-1-0-chain/2783/24?u=mtefagh). In summary, this EIP suggests an alternative to the current first-price auction transaction fee market. In this scheme, all of the transactions in a block share a universal fee; however, this fee is dynamically updated across different blocks according to a predetermined in-protocol formula. We started to look at a question relevant to all users: _what is the optimal policy to pay the minimum fee for executing a set of transactions?_ Such problems have long been investigated in economics and are frequently solved by convex optimization. In this case, the optimal policy turned out to be too optimal and could be considered an [attack](https://nbviewer.jupyter.org/github/mtefagh/fee/blob/master/fee.ipynb) in the sense that controlling the allocation of a small fraction of the total volume of transactions is enough to manipulate the price and make it zero in a short time.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mtefagh/Incentivus/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Moreover, instead of searching for the optimal behavior given a specific protocol design, we can turn such arguments around to engineer user behaviors by setting the right incentives. A simple observation is that the transaction fee pricing problem is similar in many aspects to the liquidation strategies in economics. In the former case, we want to execute many transactions, but each time we do so, the price of executing the next transaction goes up. In the latter case, we want to sell our assets, but each time we do so, the trading price goes down. An established model for the second problem is the [Almgren–Chriss](https://github.com/zcash/zcash/issues/3473#issuecomment-479625462) framework, which guarantees that the optimal execution of transaction strategy is to spread the transactions across time which in turn helps to avoid network congestion for blockchains. Overall, we believe that although such use cases of convex optimization are exploited extensively in game theory, they have not transitioned to the blockchain ecosystem yet.
